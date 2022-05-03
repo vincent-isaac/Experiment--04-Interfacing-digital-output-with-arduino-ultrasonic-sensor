@@ -36,8 +36,8 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 
 ### FIGURE 01 CIRCUIT OF INTERFACING ULTRASONIC SENSOR 
 
+![exp5](https://user-images.githubusercontent.com/75234588/166482192-dcb8adc9-e3f9-4071-aec0-851853c65bc9.png)
 
-![image](https://user-images.githubusercontent.com/36288975/166430594-5adb4ca9-5a42-4781-a7e6-7236b3766a85.png)
 
 
 
@@ -55,18 +55,46 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 
 
 ### PROGRAM 
+```c
+// C++ code
+//
+int trigger_pin=7;
+int echo_pin=5;
+long time;
+int distance;
+void setup()
+{
+  pinMode(trigger_pin,OUTPUT);
+  pinMode(echo_pin,INPUT);
+  Serial.begin(9600);
+  
+}
+
+void loop()
+{
+  digitalWrite(trigger_pin, LOW);
+  delay(2); 
+  digitalWrite(trigger_pin, HIGH);
+  delay(10); // Wait for 1000 millisecond(s)
+  digitalWrite(trigger_pin, LOW); // Wait for 1000 millisecond(s)
+  time = pulseIn(echo_pin,HIGH);   
+  distance = (time*0.034/2);
+  Serial.print("DIstance = ");
+  Serial.println(distance);
+ delay(10);
+}
+```
 
 ### Distance vs measurement table 
 
 
-
-
+![exp5 table](https://user-images.githubusercontent.com/75234588/166483258-4168602d-acd6-498b-909f-f4926bf85c96.jpeg)
 
 
 
 
 ### RESULTS
 
-
+Thus, we have interfaced an FSR(force sensitive resistor) and scale the output voltage obtained to pressure applied  is verified.
 
  
